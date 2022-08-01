@@ -3,12 +3,14 @@ import { features } from './data/features'
 function App() {
   return (
     <>
-      <div className="container">
-        <h1 className='text-center my-5'>Identify SPM Tools as per criteria</h1>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand px-3" href="#">SPM Tool Selection</a>
+      </nav>
 
-        <div className="row justify-content-center">
-          <div className='col-md-4'>
-            <h3 className='text-warning'>Select Fetures</h3>
+      <div className="container mt-5">
+        <div className="row justify-content-md-center">
+          <div className='col-md-4 mb-5'>
+            <h3>Select Fetures</h3>
             {features.map((tool, index) => (
               <div className='my-2 ms-3' key={index}>
                 <div className="form-check">
@@ -21,8 +23,11 @@ function App() {
             ))}
           </div>
           <div className='col-md-4'>
-            <h3 className='text-warning'>Available Tools</h3>
-            <h5 className='my-2 ms-3' >Trello</h5>
+            <h3>Available Tools</h3>
+            <button type="button" class="btn btn-success m-2">Secondary</button>
+            <button type="button" class="btn btn-success m-2">Secondary</button>
+            <button type="button" class="btn btn-success m-2">Secondary</button>
+            <button type="button" class="btn btn-success m-2">Secondary</button>
           </div>
         </div>
       </div>
