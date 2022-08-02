@@ -1,8 +1,7 @@
 export const t= [
     'Trello',
     'Jira',
-    'Azure',
-    'DevOps',
+    'Azure DevOps',
     'MS Project',
     'OpenProj',
     'Artemis View',	
