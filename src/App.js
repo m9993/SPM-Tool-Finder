@@ -9,13 +9,34 @@ function App() {
 
   const find = () => {
     setTools([])
+    let featureWiseTools = []
     checkList.map((item, index) => {
-      for (let i = checkList.length - 1; i >= 0; i--) {
-        // console.log(checkList[i].tools)    
-        const filteredArray = checkList[i].tools.filter(value => item.tools.includes(value));
-        setTools(filteredArray)
-      }
+      featureWiseTools.push(item.tools)
     })
+
+    // const data = [[1, 2, 4], [1, 3,4], [1,2, 3,4], [2, 3, 4]]
+    const data = featureWiseTools
+    let prev = []
+    data.map((i) => { i.map((j) => { prev.push(j) }) })
+
+    let tools = [];
+
+    data.map((i, iIndex) => {
+      data.map((j, jIndex) => {
+        if (iIndex != jIndex) {
+          tools = prev.filter(value => j.includes(value));
+          prev = tools
+          // console.log(iIndex,jIndex)
+          // console.log([...new Set(tools)])
+        }
+      })
+    })
+
+    setTools([...new Set(tools)])
+    if (featureWiseTools.length == 1) {
+      setTools(featureWiseTools[0])
+    }
+
   }
   React.useEffect(() => {
     find()
@@ -54,7 +75,7 @@ function App() {
                     className="form-check-input" type="checkbox" value="" id={"flexCheckChecked" + index}
                   />
                   <label className="form-check-label" htmlFor={"flexCheckChecked" + index}>
-                    {feature.title} {feature.id}
+                    {feature.title}
                   </label>
                 </div>
               </div>
@@ -65,30 +86,30 @@ function App() {
             <div>
               <h3>Tools From Selected Features</h3>
               <div className="accordion accordion-flush" id="accordionFlushExample">
-              {checkList.length!=0?
-                
-              checkList.map((item, index) => (
-                  <div key={index} className="accordion-item">
-                    <h2 className="accordion-header" id="flush-headingThree">
-                      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#flush-collapseThree"+index} aria-expanded="false" aria-controls={"flush-collapseThree"+index}>
-                        {item.title}
-                        <span className="badge rounded-pill bg-secondary ms-2">{item.tools.length}</span>
-                      </button>
-                    </h2>
-                    <div id={"flush-collapseThree"+index} className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                      <div className="accordion-body">
-                        <ul className="list-group list-group-flush">
-                          {item.tools.map((item, index) => (
-                            <li key={index} className="list-group-item">{item}</li>
-                          ))}
-                        </ul>
+                {checkList.length != 0 ?
+
+                  checkList.map((item, index) => (
+                    <div key={index} className="accordion-item">
+                      <h2 className="accordion-header" id="flush-headingThree">
+                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target={"#flush-collapseThree" + index} aria-expanded="false" aria-controls={"flush-collapseThree" + index}>
+                          {item.title}
+                          <span className="badge rounded-pill bg-secondary ms-2">{item.tools.length}</span>
+                        </button>
+                      </h2>
+                      <div id={"flush-collapseThree" + index} className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div className="accordion-body">
+                          <ul className="list-group list-group-flush">
+                            {item.tools.map((item, index) => (
+                              <li key={index} className="list-group-item">{item}</li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
-              ))
-              :
-              <div>No Data Available</div>
-              }
+                  ))
+                  :
+                  <div>No Data Available</div>
+                }
               </div>
             </div>
           </div>
