@@ -38,7 +38,6 @@ function App() {
     find()
   }, [submit])
 
-
   return (
     <>
       {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -47,7 +46,7 @@ function App() {
       <nav className="navbar sticky-top navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">SPM Tool Selection</a>
-            <button className="btn btn-sm btn-danger" type="submit">Reset</button>
+            <button className="btn btn-sm btn-danger" onClick={()=>{window.location.reload(false)}}>Reset</button>
         </div>
       </nav>
 
