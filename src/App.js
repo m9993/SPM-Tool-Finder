@@ -16,28 +16,24 @@ function App() {
 
     // const data = [[1, 2, 4], [1, 3,4], [1,2, 3,4], [2, 3, 4]]
     const data = featureWiseTools
+    let tools = [];
+
     let prev = []
     data.map((i) => { i.map((j) => { prev.push(j) }) })
 
-    let tools = [];
-
-    data.map((i, iIndex) => {
-      data.map((j, jIndex) => {
-        if (iIndex != jIndex) {
-          tools = prev.filter(value => j.includes(value));
-          prev = tools
-          // console.log(iIndex,jIndex)
-          // console.log([...new Set(tools)])
-        }
-      })
+    data.map((i, index) => {
+      tools = prev.filter(value => i.includes(value));
+      prev = tools
     })
 
     setTools([...new Set(tools)])
+
     if (featureWiseTools.length == 1) {
       setTools(featureWiseTools[0])
     }
 
   }
+
   React.useEffect(() => {
     find()
   }, [submit])
@@ -45,8 +41,14 @@ function App() {
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      {/* <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <a className="navbar-brand px-3" href="#">SPM Tool Selection</a>
+      </nav> */}
+      <nav className="navbar sticky-top navbar-dark bg-dark">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">SPM Tool Selection</a>
+            <button className="btn btn-sm btn-danger" type="submit">Reset</button>
+        </div>
       </nav>
 
       <div className="container mt-5">
@@ -65,7 +67,7 @@ function App() {
                         const filteredItem = item.filter(a => (a.id != feature.id))
                         setCheckList(filteredItem)
                       }
-                      if (!count) {
+                      else {
                         item.push(feature)
                         setCheckList(item)
                       }
