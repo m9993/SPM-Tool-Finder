@@ -42,10 +42,10 @@ function App() {
     <>
       <nav className="navbar sticky-top navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            <img src="logo192.png" alt="" width="30" height="30" class="d-inline-block align-text-top me-3"/>
+          <div className="navbar-brand" href="#">
+            <img src="logo192.png" alt="" width="30" height="30" className="d-inline-block align-text-top me-3"/>
             SPM Tool Selection
-            </a>
+            </div>
         </div>
       </nav>
 
