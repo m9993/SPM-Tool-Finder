@@ -1,7 +1,8 @@
 import {
     t
 } from './tools'
-export const features = [{
+export const features = [
+    {
         id: 1,
         title: 'Open Source',
         tools: [t[4], t[7], t[9], t[10], t[12], t[13], ]

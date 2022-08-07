@@ -46,13 +46,16 @@ function App() {
             <img src="logo192.png" alt="" width="30" height="30" className="d-inline-block align-text-top me-3"/>
             SPM Tool Selection
             </div>
+            <button type="button" className="btn btn-sm btn-danger" onClick={()=>{
+              window.location.reload();
+            }}>Reset</button>
         </div>
       </nav>
 
       <div className="container mt-5">
         <div className="row justify-content-md-center">
           <div className='col-md-5 mb-5'>
-            <h4>Select Fetures</h4>
+            <h4>Select Features</h4>
             {features.map((feature, index) => (
               <div className='my-2 ms-3' key={index}>
                 <div className="form-check">
